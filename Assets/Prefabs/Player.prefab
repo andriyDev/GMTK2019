@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341571085}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0063704154, w: 0.99997973}
+  m_LocalPosition: {x: -0.5, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2417594920928299576}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.73}
 --- !u!212 &1341571087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 736410e67e09673419294501ec263c22, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.7294118, b: 0.7294118, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -284,7 +284,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ad72bf709cbb33419fb30e0358d39a6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.745283, g: 0.7277056, b: 0.7277056, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAX_SPEED: 9
   ACCELERATION: 100
-  SWORD_ANIMATION_TIME: 0.5
+  SWORD_ANIMATION_TIME: 0.3
   SWORD_MAX_ROTATION: 65
   attacker: {fileID: 88963764783617906}
   interacter: {fileID: 88963764360248534}
