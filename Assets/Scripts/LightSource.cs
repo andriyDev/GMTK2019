@@ -53,6 +53,8 @@ public class LightSource : MonoBehaviour
     public SpriteRenderer sprite;
     public SpriteMask mask;
 
+    public float flickerRate = -1;
+
     [SerializeField]
     private bool _lightOn;
     [SerializeField]
@@ -94,11 +96,14 @@ public class LightSource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if(time > 2)
+        if (flickerRate > 0)
         {
-            time -= 2;
-            lightOn = !lightOn;
+            time += Time.deltaTime;
+            if (time > flickerRate)
+            {
+                time -= flickerRate;
+                lightOn = !lightOn;
+            }
         }
     }
 }
