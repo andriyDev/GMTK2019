@@ -47,6 +47,7 @@ Shader "Sprites/Light"
 					float2 texcoord  : TEXCOORD0;
 				};
 
+				sampler2D _MainTex;
 				fixed4 _Color;
 
 				v2f vert(appdata_t IN)
@@ -61,8 +62,8 @@ Shader "Sprites/Light"
 
 				fixed4 frag(v2f IN) : SV_Target
 				{
-					float4 c = _Color;
-					c.a *= pow(1.5, 1 - IN.texcoord.y) - 1;
+					float4 c = IN.color;
+					c.a *= (pow(2, IN.texcoord.y) - 1);
 					return c;
 				}
 			ENDCG
