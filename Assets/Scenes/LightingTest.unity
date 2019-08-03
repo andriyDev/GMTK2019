@@ -803,12 +803,12 @@ PrefabInstance:
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7548812
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.310861
+      value: 2.97
       objectReference: {fileID: 0}
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
@@ -869,6 +869,41 @@ PrefabInstance:
         type: 3}
       propertyPath: flickerRate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb57f67945e058b48bfa92622072b9fc, type: 2}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.63529414
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}
