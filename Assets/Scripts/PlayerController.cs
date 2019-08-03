@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     List<Interactable> nearbyInteractables = new List<Interactable>();
     public AttackHandler attacker;
+    public InteractHandler interacter;
 
     void Start()
     {
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Move();
+    }
+
+    private void Move()
+    {
         float translationY = Input.GetAxis("Vertical") * speed * Time.fixedDeltaTime;
         float translationX = Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime;
 
@@ -35,9 +41,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Interact() {
-        for(int i = 0; i < nearbyInteractables.Count; i++)
+        for(int i = 0; i < interacter.nearbyInteractables.Count; i++)
         {
-            nearbyInteractables[i].onInteract();
+            interacter.nearbyInteractables[i].onInteract();
         }
     }
 
@@ -45,22 +51,6 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < attacker.nearbyAttackables.Count; i++)
         {
             attacker.nearbyAttackables[i].onAttack();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D otherCollider)
-    {
-        Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
-        if (other != null) {
-            nearbyInteractables.Add(other);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D otherCollider)
-    {
-        Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
-        if (other != null) {
-            nearbyInteractables.Remove(other);
         }
     }
 }

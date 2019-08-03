@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackHandler : MonoBehaviour
 {
-    List<Attackable> _nearbyAttackables = new List<Attackable>();
+    private List<Attackable> _nearbyAttackables = new List<Attackable>();
 
     public List<Attackable> nearbyAttackables
     {

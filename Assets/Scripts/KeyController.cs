@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : Interactable
+public class KeyController : Interactable
 {
     public override void onInteract() {
         Destroy(this.gameObject);
-    }    
+    }
 }
