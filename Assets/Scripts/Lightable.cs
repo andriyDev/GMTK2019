@@ -51,7 +51,7 @@ public class Lightable : MonoBehaviour
         {
             if(!obj) { continue; }
             s = obj.GetComponent<SpriteRenderer>();
-            float brightness = ((lights - 1) / 3.0f);
+            float brightness = ((lights - 1) / 4.0f);
             s.color = new Color(brightness, brightness, brightness, 1);
         }
     }
