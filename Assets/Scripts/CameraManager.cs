@@ -9,6 +9,9 @@ public class CameraManager : MonoBehaviour
     public float positionMoveSpeed = 10;
     public float zoomSpeed = 1;
 
+    private float zoomVelocity = 0;
+    private Vector3 positionVelocity = Vector3.zero;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +22,9 @@ public class CameraManager : MonoBehaviour
         {
             maxTime = 1;
         }
-        managedCamera.transform.position = Vector3.MoveTowards(managedCamera.transform.position, target.transform.position, positionMoveSpeed * (distanceTime / maxTime) * Time.deltaTime);
-        managedCamera.orthographicSize = Mathf.MoveTowards(managedCamera.orthographicSize, target.viewSize, zoomSpeed * Time.deltaTime * (zoomTime / maxTime));
+        if(zoomTime == 0) { zoomTime = 1; }
+        if(distanceTime == 0) { distanceTime = 1; }
+        managedCamera.transform.position = Vector3.SmoothDamp(managedCamera.transform.position, target.transform.position, ref positionVelocity, positionMoveSpeed * (maxTime / distanceTime));
+        managedCamera.orthographicSize = Mathf.SmoothDamp(managedCamera.orthographicSize, target.viewSize, ref zoomVelocity, zoomSpeed * (maxTime / zoomTime    ));
     }
 }

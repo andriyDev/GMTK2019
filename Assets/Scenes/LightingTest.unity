@@ -662,8 +662,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managedCamera: {fileID: 1787380106}
   target: {fileID: 717227189}
-  positionMoveSpeed: 10
-  zoomSpeed: 10
+  positionMoveSpeed: 0.5
+  zoomSpeed: 0.5
 --- !u!1 &1925375927
 GameObject:
   m_ObjectHideFlags: 0
