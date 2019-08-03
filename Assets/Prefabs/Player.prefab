@@ -228,8 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   speed: 10
-  MAX_SPEED: 5
-  ACCELERATION: 10
+  MAX_SPEED: 9
+  ACCELERATION: 100
   attacker: {fileID: 88963764783617906}
   interacter: {fileID: 88963764360248534}
 --- !u!50 &88963764899720645
