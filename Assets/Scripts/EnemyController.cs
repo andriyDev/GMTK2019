@@ -8,7 +8,6 @@ public class EnemyController : Attackable
     public AudioClip deathSound;
     public AudioClip painSound;
     public PlayerController player;
-    public float soundVolume = 1.0f;
     public short STARTING_HEALTH = 3;
     public float MAX_SPEED = 2.0f;
     public float ACCELERATION = 20.0f;
@@ -19,6 +18,7 @@ public class EnemyController : Attackable
     {
         rb = GetComponent<Rigidbody2D>();
         health = STARTING_HEALTH;
+        Shoot();
     }
 
     void FixedUpdate()
@@ -40,6 +40,11 @@ public class EnemyController : Attackable
     {
         Vector3 newPosition = Vector3.Normalize(player.transform.position - transform.position);
         rb.velocity = Vector3.MoveTowards(rb.velocity, newPosition * MAX_SPEED, ACCELERATION * Time.fixedDeltaTime);
+    }
+
+    private void Shoot()
+    {
+
     }
 
     public override void onAttack() {
