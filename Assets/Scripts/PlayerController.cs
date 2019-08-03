@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public float speed = 10.0f;
     public float MAX_SPEED = 9.0f;
     public float ACCELERATION = 100.0f;
-    List<Interactable> nearbyInteractables = new List<Interactable>();
+    public float SWORD_ANIMATION_TIME = 0.5f;
+    public int SWORD_MAX_ROTATION = 65;
     public AttackHandler attacker;
     public InteractHandler interacter;
+    public GameObject swordRoot;
+    Rigidbody2D rb;
+    List<Interactable> nearbyInteractables = new List<Interactable>();
+    float swordAnimationTimer = -1;
 
     void Start()
     {
@@ -25,8 +28,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Attack"))
         {
-            Attack();
+            if (!IsAttacking()) {
+                Attack();
+            }
         }
+        AnimateSword();
     }
 
     void FixedUpdate()
@@ -60,9 +66,24 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Attack() {
+        swordAnimationTimer = SWORD_ANIMATION_TIME;
         for(int i = 0; i < attacker.nearbyAttackables.Count; i++)
         {
             attacker.nearbyAttackables[i].onAttack();
+        }
+    }
+
+    private bool IsAttacking() {
+        return swordAnimationTimer > 0;
+    }
+
+    private void AnimateSword() {
+        if (IsAttacking()) {
+            float normalizedAnimationTime = (SWORD_ANIMATION_TIME - swordAnimationTimer) / SWORD_ANIMATION_TIME;
+            swordRoot.transform.localRotation = Quaternion.Euler(0, 0, -normalizedAnimationTime * SWORD_MAX_ROTATION);
+            swordAnimationTimer -= Time.deltaTime;
+        } else {
+            swordRoot.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
