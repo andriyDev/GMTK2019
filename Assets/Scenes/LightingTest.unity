@@ -250,7 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101320b37dbedf24796934083a706a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 2
+  _lightOn: 1
+  _direction: 0
 --- !u!4 &1182511279
 Transform:
   m_ObjectHideFlags: 0
@@ -512,7 +513,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 71552e587e7cc9e46bdff882fd922746, type: 3}
   - {fileID: 21300000, guid: 71552e587e7cc9e46bdff882fd922746, type: 3}
   - {fileID: 21300000, guid: 71552e587e7cc9e46bdff882fd922746, type: 3}
-  mask: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &1925375929
 Transform:
   m_ObjectHideFlags: 0
