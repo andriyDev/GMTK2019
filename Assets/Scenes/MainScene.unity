@@ -451,8 +451,8 @@ GameObject:
   - component: {fileID: 1777026612}
   - component: {fileID: 1777026611}
   - component: {fileID: 1777026610}
-  - component: {fileID: 1777026613}
   - component: {fileID: 1777026609}
+  - component: {fileID: 1777026613}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -571,7 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823945d8d2a45e74c81da7d19374285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 10143c0e2fe9b9e46ab05465e95f7e2e, type: 3}
+  painSound: {fileID: 8300000, guid: 5a7fb471455f3504494fae5dd4b5f912, type: 3}
   player: {fileID: 1931045936}
+  soundVolume: 1
+  STARTING_HEALTH: 3
   MAX_SPEED: 2
   ACCELERATION: 20
   FORCE_MULTIPLIER: 15

@@ -5,14 +5,20 @@ using UnityEngine;
 public class EnemyController : Attackable
 {
     Rigidbody2D rb;
+    public AudioClip deathSound;
+    public AudioClip painSound;
     public PlayerController player;
+    public float soundVolume = 1.0f;
+    public short STARTING_HEALTH = 3;
     public float MAX_SPEED = 2.0f;
     public float ACCELERATION = 20.0f;
     public float FORCE_MULTIPLIER = 15.0f;
+    short health;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = STARTING_HEALTH;
     }
 
     void FixedUpdate()
@@ -37,7 +43,14 @@ public class EnemyController : Attackable
     }
 
     public override void onAttack() {
-        Vector3 newPosition = Vector3.Normalize(transform.position - player.transform.position);
-        rb.velocity += new Vector2(newPosition.x, newPosition.y) * FORCE_MULTIPLIER;
+        health--;
+        if (health <= 0) {
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            Destroy(this.gameObject);
+        } else {
+            AudioSource.PlayClipAtPoint(painSound, transform.position);
+            Vector3 newPosition = Vector3.Normalize(transform.position - player.transform.position);
+            rb.velocity += new Vector2(newPosition.x, newPosition.y) * FORCE_MULTIPLIER;
+        }
     }
 }
