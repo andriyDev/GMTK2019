@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lever : Interactable
 {
     public Lightable lightable;
-    public List<Togglable> targets;
+    public List<Component> targets;
     public Sprite[] onSprites;
     public Sprite[] offSprites;
 
@@ -15,7 +15,7 @@ public class Lever : Interactable
     {
         for(int i = 0; i < targets.Count; i++)
         {
-            targets[i].Toggle();
+            ((Togglable)targets[i]).Toggle();
         }
         triggered = !triggered;
         lightable.shadowSprites = triggered ? onSprites : offSprites;
