@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 10.0f;
     List<Interactable> nearbyInteractables = new List<Interactable>();
+    public AttackHandler attacker;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             Interact();
+        }
+        if (Input.GetButtonDown("Attack"))
+        {
+            Attack();
         }
     }
 
@@ -33,6 +38,13 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < nearbyInteractables.Count; i++)
         {
             nearbyInteractables[i].onInteract();
+        }
+    }
+
+    private void Attack() {
+        for(int i = 0; i < attacker.nearbyAttackables.Count; i++)
+        {
+            attacker.nearbyAttackables[i].onAttack();
         }
     }
 
