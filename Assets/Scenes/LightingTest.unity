@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101320b37dbedf24796934083a706a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 1182511281}
+  mask: {fileID: 1182511282}
   _lightOn: 1
   _direction: 0
 --- !u!4 &1182511279

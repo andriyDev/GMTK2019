@@ -25,6 +25,8 @@ public class LightSource : MonoBehaviour
                     lightable.Unlight(direction);
                 }
             }
+            mask.enabled = _lightOn;
+            sprite.enabled = _lightOn;
         }
     }
 
@@ -47,6 +49,9 @@ public class LightSource : MonoBehaviour
             }
         }
     }
+
+    public SpriteRenderer sprite;
+    public SpriteMask mask;
 
     [SerializeField]
     private bool _lightOn;
@@ -80,7 +85,7 @@ public class LightSource : MonoBehaviour
             }
         }
     }
-
+    float time = 0;
     void Start()
     {
         
@@ -89,6 +94,11 @@ public class LightSource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
+        if(time > 2)
+        {
+            time -= 2;
+            lightOn = !lightOn;
+        }
     }
 }
