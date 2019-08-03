@@ -7,7 +7,8 @@ public class EnemyController : Attackable
     Rigidbody2D rb;
     public PlayerController player;
     public float MAX_SPEED = 2.0f;
-    public float ACCELERATION = 100.0f;
+    public float ACCELERATION = 20.0f;
+    public float FORCE_MULTIPLIER = 15.0f;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class EnemyController : Attackable
     }
 
     public override void onAttack() {
-        Destroy(this.gameObject);
+        Vector3 newPosition = Vector3.Normalize(transform.position - player.transform.position);
+        rb.velocity += new Vector2(newPosition.x, newPosition.y) * FORCE_MULTIPLIER;
     }
 }
