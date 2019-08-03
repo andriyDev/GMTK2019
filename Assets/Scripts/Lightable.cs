@@ -20,9 +20,10 @@ public class Lightable : MonoBehaviour
     {
         shadows[direction] = new GameObject();
         shadows[direction].transform.parent = transform;
-        shadows[direction].transform.localPosition = new Vector3(0, 0, 0);//new Vector3(Mathf.Sin(direction * Mathf.PI / 2.0f), Mathf.Cos(direction * Mathf.PI / 2.0f), 0) * 1;
+        shadows[direction].transform.localPosition = new Vector3(0, 0, 0);
         shadows[direction].transform.localEulerAngles = new Vector3(0, 0, direction * 90);
         SpriteRenderer s = shadows[direction].AddComponent<SpriteRenderer>();
+        s.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         s.sprite = shadowSprites[direction];
 
         int lights = 0;
