@@ -10,6 +10,19 @@ public class Lightable : MonoBehaviour
 
     private GameObject[] shadows;
 
+    public bool[] litDirections
+    {
+        get
+        {
+            bool[] directions = new bool[4];
+            for(int i = 0; i < 4; i++)
+            {
+                directions[i] = shadows[i] != null;
+            }
+            return directions;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
