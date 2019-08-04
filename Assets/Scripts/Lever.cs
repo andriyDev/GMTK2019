@@ -6,8 +6,8 @@ public class Lever : Interactable
 {
     public Lightable lightable;
     public List<Component> targets;
-    public Sprite[] onSprites;
-    public Sprite[] offSprites;
+    public Sprite onSprite;
+    public Sprite offSprite;
 
     private bool triggered;
 
@@ -18,15 +18,6 @@ public class Lever : Interactable
             ((Togglable)targets[i]).Toggle();
         }
         triggered = !triggered;
-        lightable.shadowSprites = triggered ? onSprites : offSprites;
-        bool[] directions = lightable.litDirections;
-        for(int i = 0; i < 4; i++)
-        {
-            if(directions[i])
-            {
-                lightable.Unlight(i);
-                lightable.Light(i);
-            }
-        }
+        lightable.shadowSprite = triggered ? onSprite : offSprite;
     }
 }
