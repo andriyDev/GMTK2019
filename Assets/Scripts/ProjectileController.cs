@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Rigidbody2D rb;
+    public Vector3 target;
+    public float MAX_SPEED = 4.0f;
+    public float ACCELERATION = 100.0f;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Move();
+    }
+
+    void Move()
+    {
+        if (target != null)
+        {
+            rb.velocity = Vector3.MoveTowards(rb.velocity, target * MAX_SPEED, ACCELERATION * Time.fixedDeltaTime);
+        }
     }
 }

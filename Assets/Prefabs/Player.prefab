@@ -306,10 +306,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3fde8a26de228468d76ffbc920c679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  painSound: {fileID: 8300000, guid: e9ebd10c49c76074dbd4f77dce7a5ea9, type: 3}
   MAX_SPEED: 9
   ACCELERATION: 100
   SWORD_ANIMATION_TIME: 0.3
   SWORD_MAX_ROTATION: 65
+  FORCE_MULTIPLIER: 15
   attacker: {fileID: 88963764783617906}
   interacter: {fileID: 88963764360248534}
   swordRoot: {fileID: 4234222414230484732}

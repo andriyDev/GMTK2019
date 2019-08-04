@@ -8,17 +8,32 @@ public class EnemyController : Attackable
     public AudioClip deathSound;
     public AudioClip painSound;
     public PlayerController player;
+    public GameObject projectilePrefab;
     public short STARTING_HEALTH = 3;
     public float MAX_SPEED = 2.0f;
     public float ACCELERATION = 20.0f;
     public float FORCE_MULTIPLIER = 15.0f;
+    public float SHOOTING_PERIOD = 2.0f;
+    float shootingTimer;
     short health;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = STARTING_HEALTH;
-        Shoot();
+        shootingTimer = SHOOTING_PERIOD;
+    }
+
+    void Update()
+    {
+        if (shootingTimer <= 0)
+        {
+            Shoot();
+            shootingTimer = SHOOTING_PERIOD;
+        }
+        else {
+            shootingTimer -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
@@ -44,17 +59,30 @@ public class EnemyController : Attackable
 
     private void Shoot()
     {
-
+        Vector3 projectileStartPosition = transform.position + Vector3.Normalize(rb.velocity);
+        GameObject projectileObject = (GameObject) Instantiate(projectilePrefab, projectileStartPosition, transform.rotation);
+        ProjectileController projectile = projectileObject.GetComponent<ProjectileController>();
+        projectile.target = GetProjectileTarget(projectile.MAX_SPEED);
     }
 
-    public override void onAttack() {
+    private Vector3 GetProjectileTarget(float speed)
+    {
+        float timeToPlayer = ((player.transform.position - transform.position).magnitude) / speed;
+        Vector3 playerFuturePosition = (player.velocity * timeToPlayer) + player.transform.position;
+        return Vector3.Normalize(playerFuturePosition - transform.position);
+    }
+
+    public override void onAttack(GameObject attacker)
+    {
         health--;
-        if (health <= 0) {
+        if (health <= 0)
+        {
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
             Destroy(this.gameObject);
-        } else {
+        } else
+        {
             AudioSource.PlayClipAtPoint(painSound, transform.position);
-            Vector3 newPosition = Vector3.Normalize(transform.position - player.transform.position);
+            Vector3 newPosition = Vector3.Normalize(transform.position - attacker.transform.position);
             rb.velocity += new Vector2(newPosition.x, newPosition.y) * FORCE_MULTIPLIER;
         }
     }
