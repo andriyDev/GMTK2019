@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour, Togglable
     public GameObject topLeft;
     public GameObject bottomRight;
     public GameObject opens;
+    public GameObject text;
     public bool DROP_KEYS = true;
     public float KEY_DROP_RATE = 0.2f;
     GameObject key;
@@ -81,9 +82,11 @@ public class EnemySpawner : MonoBehaviour, Togglable
         keyObject.SetActive(false);
         KeyController keyController = keyObject.GetComponent<KeyController>();
         Component opensController = opens.GetComponent<Door>();
-        if (opensController != null)
+        Component textController = text.GetComponent<TogglableText>();
+        if (opensController != null && textController != null)
         {
             keyController.targets.Add(opensController);
+            keyController.targets.Add(textController);
             keyController.targets.Add(this);
             key = keyObject;
         }
