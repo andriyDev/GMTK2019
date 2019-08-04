@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractHandler : MonoBehaviour
 {
     private List<Interactable> _nearbyInteractables = new List<Interactable>();
+    public GameObject interactText;
 
     public List<Interactable> nearbyInteractables
     {
@@ -17,6 +18,7 @@ public class InteractHandler : MonoBehaviour
     {
         Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
         if (other != null) {
+            interactText.SetActive(true);
             _nearbyInteractables.Add(other);
         }
     }
@@ -26,6 +28,9 @@ public class InteractHandler : MonoBehaviour
         Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
         if (other != null) {
             _nearbyInteractables.Remove(other);
+        }
+        if (_nearbyInteractables.Count == 0) {
+            interactText.SetActive(false);
         }
     }
 }
