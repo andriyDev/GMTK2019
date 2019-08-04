@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour, Togglable
 
     void Update()
     {
-        if (SPAWNING)
+        if (SPAWNING && player != null)
         {
             if (spawnTimer <= 0)
             {
@@ -70,6 +70,7 @@ public class EnemySpawner : MonoBehaviour, Togglable
         enemyController.player = player;
         if (DROP_KEYS && Random.value < KEY_DROP_RATE)
         {
+            DROP_KEYS = false;
             enemyController.key = key;
         }
     }
@@ -79,10 +80,11 @@ public class EnemySpawner : MonoBehaviour, Togglable
         GameObject keyObject = (GameObject) Instantiate(keyPrefab);
         keyObject.SetActive(false);
         KeyController keyController = keyObject.GetComponent<KeyController>();
-        Togglable opensController = opens.GetComponent<Door>();
+        Component opensController = opens.GetComponent<Door>();
         if (opensController != null)
         {
-            keyController.opens = opensController;
+            keyController.targets.Add(opensController);
+            keyController.targets.Add(this);
             key = keyObject;
         }
     }

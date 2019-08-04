@@ -29,22 +29,28 @@ public class EnemyController : Attackable, Togglable
 
     void Update()
     {
-        if (shootingTimer <= 0)
+        if (player != null)
         {
-            Shoot();
-            shootingTimer = SHOOTING_PERIOD;
-        }
-        else {
-            shootingTimer -= Time.deltaTime;
+            if (shootingTimer <= 0)
+            {
+                Shoot();
+                shootingTimer = SHOOTING_PERIOD;
+            }
+            else {
+                shootingTimer -= Time.deltaTime;
+            }
         }
     }
 
     void FixedUpdate()
     {
-        Rotate();
-        if (CAN_MOVE)
+        if (player != null)
         {
-            Move();
+            Rotate();
+            if (CAN_MOVE)
+            {
+                Move();
+            }
         }
     }
 
