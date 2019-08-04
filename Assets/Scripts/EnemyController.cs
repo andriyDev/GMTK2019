@@ -62,8 +62,14 @@ public class EnemyController : Attackable
         Vector3 projectileStartPosition = transform.position + Vector3.Normalize(rb.velocity);
         GameObject projectileObject = (GameObject) Instantiate(projectilePrefab, projectileStartPosition, transform.rotation);
         ProjectileController projectile = projectileObject.GetComponent<ProjectileController>();
-        Vector3 target = Vector3.Normalize(player.transform.position - transform.position);
-        projectile.target = target;
+        projectile.target = GetProjectileTarget(projectile.MAX_SPEED);
+    }
+
+    private Vector3 GetProjectileTarget(float speed)
+    {
+        float timeToPlayer = ((player.transform.position - transform.position).magnitude) / speed;
+        Vector3 playerFuturePosition = (player.velocity * timeToPlayer) + player.transform.position;
+        return Vector3.Normalize(playerFuturePosition - transform.position);
     }
 
     public override void onAttack(GameObject attacker)

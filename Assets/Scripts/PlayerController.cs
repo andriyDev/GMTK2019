@@ -17,6 +17,13 @@ public class PlayerController : Attackable
     List<Interactable> nearbyInteractables = new List<Interactable>();
     float swordAnimationTimer = -1;
 
+    public Vector3 velocity
+    {
+        get {
+            return rb.velocity;
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
