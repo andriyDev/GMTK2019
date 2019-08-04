@@ -195,7 +195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8}
+  m_Size: {x: 1.5, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &88963764783617906
 MonoBehaviour:
@@ -307,11 +307,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   painSound: {fileID: 8300000, guid: e9ebd10c49c76074dbd4f77dce7a5ea9, type: 3}
+  loseSound: {fileID: 8300000, guid: 9811980e27408e64a9a1fbc1382170bc, type: 3}
   MAX_SPEED: 9
   ACCELERATION: 100
   SWORD_ANIMATION_TIME: 0.3
   SWORD_MAX_ROTATION: 65
   FORCE_MULTIPLIER: 15
+  STARTING_HEALTH: 3
   attacker: {fileID: 88963764783617906}
   interacter: {fileID: 88963764360248534}
   swordRoot: {fileID: 4234222414230484732}
