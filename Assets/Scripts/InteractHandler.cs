@@ -18,8 +18,11 @@ public class InteractHandler : MonoBehaviour
     {
         Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
         if (other != null) {
-            interactText.SetActive(true);
             _nearbyInteractables.Add(other);
+            if (_nearbyInteractables.Count == 1)
+            {
+                toggleInteractText();
+            }
         }
     }
 
@@ -28,9 +31,18 @@ public class InteractHandler : MonoBehaviour
         Interactable other = otherCollider.gameObject.GetComponent<Interactable>();
         if (other != null) {
             _nearbyInteractables.Remove(other);
+            if (_nearbyInteractables.Count == 0) {
+                toggleInteractText();
+            }
         }
-        if (_nearbyInteractables.Count == 0) {
-            interactText.SetActive(false);
+    }
+
+    private void toggleInteractText()
+    {
+        Togglable textComponent = interactText.GetComponent<TogglableText>();
+        if (textComponent != null)
+        {
+            textComponent.Toggle();
         }
     }
 }

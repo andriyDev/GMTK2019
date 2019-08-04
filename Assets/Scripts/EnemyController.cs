@@ -9,7 +9,7 @@ public class EnemyController : Attackable, Togglable
     public AudioClip painSound;
     public PlayerController player;
     public GameObject projectilePrefab;
-    public GameObject keyPrefab;
+    public GameObject key;
     public short STARTING_HEALTH = 3;
     public float MAX_SPEED = 2.0f;
     public float ACCELERATION = 20.0f;
@@ -17,8 +17,6 @@ public class EnemyController : Attackable, Togglable
     public float SHOOTING_PERIOD = 2.0f;
     public float MAX_SHOOTING_ANGLE = 40.0f;
     public bool CAN_MOVE = true;
-    public bool DROP_KEYS = true;
-    public float KEY_DROP_RATE = 0.2f;
     float shootingTimer;
     short health;
 
@@ -31,22 +29,28 @@ public class EnemyController : Attackable, Togglable
 
     void Update()
     {
-        if (shootingTimer <= 0)
+        if (player != null)
         {
-            Shoot();
-            shootingTimer = SHOOTING_PERIOD;
-        }
-        else {
-            shootingTimer -= Time.deltaTime;
+            if (shootingTimer <= 0)
+            {
+                Shoot();
+                shootingTimer = SHOOTING_PERIOD;
+            }
+            else {
+                shootingTimer -= Time.deltaTime;
+            }
         }
     }
 
     void FixedUpdate()
     {
-        Rotate();
-        if (CAN_MOVE)
+        if (player != null)
         {
-            Move();
+            Rotate();
+            if (CAN_MOVE)
+            {
+                Move();
+            }
         }
     }
 
@@ -79,9 +83,10 @@ public class EnemyController : Attackable, Togglable
 
     private void Die()
     {
-        if (DROP_KEYS && Random.value < KEY_DROP_RATE)
+        if (key != null)
         {
-            GameObject keyObject = (GameObject) Instantiate(keyPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+            key.transform.position =  transform.position;
+            key.SetActive(true);
         }
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         Destroy(this.gameObject);
