@@ -18,6 +18,9 @@ public class Lever : Interactable
             ((Togglable)targets[i]).Toggle();
         }
         triggered = !triggered;
-        lightable.shadowSprite = triggered ? onSprite : offSprite;
+        if (lightable)
+        {
+            lightable.shadowSprite = triggered ? onSprite : offSprite;
+        }
     }
 }

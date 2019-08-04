@@ -1019,6 +1019,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &759895088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238402843150725726, guid: acab831a5070a7540879bb99d369110a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1842624642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &759895089
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759895088}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.3, y: -0.5}
+      - {x: -0.3, y: 0.5}
+    - - {x: 0.3, y: 0.5}
+      - {x: 0.3, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+    - - {x: -0.5, y: 0.3}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.3}
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.3}
+      - {x: 0.5, y: -0.3}
+      - {x: 0.5, y: 0.5}
 --- !u!1001 &869753899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10309,6 +10356,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e1bca562bf5b54e9e2685b4e85c638, type: 3}
+--- !u!1 &1159906235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238402843150725726, guid: acab831a5070a7540879bb99d369110a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374210167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &1159906236
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159906235}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.3, y: -0.5}
+      - {x: -0.3, y: 0.5}
+    - - {x: 0.3, y: 0.5}
+      - {x: 0.3, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+    - - {x: -0.5, y: 0.3}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.3}
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.3}
+      - {x: 0.5, y: -0.3}
+      - {x: 0.5, y: 0.5}
 --- !u!1001 &1202916942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10612,6 +10706,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dcf5e6049a036644a9e1a0305f37f867,
         type: 3}
+    - target: {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -10622,7 +10726,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.298
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}
 --- !u!1001 &1402621456
 PrefabInstance:
@@ -10728,7 +10833,7 @@ PrefabInstance:
     - target: {fileID: 5343186949523110118, guid: f61766bdf3a514d4893d4e46d3c41d87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.782059
+      value: 17.72
       objectReference: {fileID: 0}
     - target: {fileID: 5343186949523110118, guid: f61766bdf3a514d4893d4e46d3c41d87,
         type: 3}
@@ -10885,6 +10990,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dcf5e6049a036644a9e1a0305f37f867,
         type: 3}
+    - target: {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.44705883
+      objectReference: {fileID: 0}
     - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -10895,8 +11010,56 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.008
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}
+--- !u!1 &1554251225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238402843150725726, guid: acab831a5070a7540879bb99d369110a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1629547564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &1554251226
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554251225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.3, y: -0.5}
+      - {x: -0.3, y: 0.5}
+    - - {x: 0.3, y: 0.5}
+      - {x: 0.3, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+    - - {x: -0.5, y: 0.3}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.3}
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.3}
+      - {x: 0.5, y: -0.3}
+      - {x: 0.5, y: 0.5}
 --- !u!1001 &1629547564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10990,13 +11153,71 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dcf5e6049a036644a9e1a0305f37f867,
         type: 3}
+    - target: {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}
+--- !u!1 &1737359094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238402843150725726, guid: acab831a5070a7540879bb99d369110a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1540855824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &1737359095
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737359094}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.3, y: -0.5}
+      - {x: -0.3, y: 0.5}
+    - - {x: 0.3, y: 0.5}
+      - {x: 0.3, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+    - - {x: -0.5, y: 0.3}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.3}
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.3}
+      - {x: 0.5, y: -0.3}
+      - {x: 0.5, y: 0.5}
 --- !u!114 &1742853892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 88963764899720646, guid: 33e1bca562bf5b54e9e2685b4e85c638,
@@ -11282,6 +11503,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dcf5e6049a036644a9e1a0305f37f867,
         type: 3}
+    - target: {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725699, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -11292,5 +11523,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8238402843150725727, guid: acab831a5070a7540879bb99d369110a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}

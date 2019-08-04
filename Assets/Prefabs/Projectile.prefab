@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ad72bf709cbb33419fb30e0358d39a6, type: 3}
-  m_Color: {r: 0.74509805, g: 0.7294118, b: 0.7294118, a: 1}
+  m_Color: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shadowSprite: {fileID: 21300000, guid: 9ad72bf709cbb33419fb30e0358d39a6, type: 3}
   shadowSize: 0.7
+  shadowBias: 0.5
+  shadowLightBias: 0.5
 --- !u!1 &4021893584053224457
 GameObject:
   m_ObjectHideFlags: 0
