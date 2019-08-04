@@ -73,6 +73,7 @@ public class PlayerController : Attackable
 
     private void Interact()
     {
+
         for(int i = 0; i < interacter.nearbyInteractables.Count; i++)
         {
             interacter.nearbyInteractables[i].onInteract();
