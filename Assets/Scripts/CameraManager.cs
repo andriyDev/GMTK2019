@@ -15,6 +15,10 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!target)
+        {
+            return;
+        }
         float distanceTime = (target.transform.position - managedCamera.transform.position).magnitude / positionMoveSpeed;
         float zoomTime = Mathf.Abs(target.viewSize - managedCamera.orthographicSize) / zoomSpeed;
         float maxTime = Mathf.Max(distanceTime, zoomTime);
