@@ -33,6 +33,7 @@ public class LightSource : MonoBehaviour, Togglable
     public SpriteRenderer sprite;
     public SpriteMask mask;
     public GameObject sourcePoint;
+    public Sprite maskTexture;
 
     public float range;
     public float flickerRate = -1;
@@ -75,6 +76,11 @@ public class LightSource : MonoBehaviour, Togglable
         lightOn = lightOn;
         sprite.material.SetVector("_LightPosition", new Vector4(sourcePoint.transform.position.x, sourcePoint.transform.position.y));
         sprite.material.SetFloat("_LightRange", range);
+        if(maskTexture)
+        {
+            mask.sprite = maskTexture;
+            sprite.material.SetTexture("_Mask", maskTexture.texture);
+        }
     }
 
     // Update is called once per frame

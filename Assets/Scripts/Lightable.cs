@@ -25,6 +25,7 @@ public class Lightable : MonoBehaviour
     private Sprite _shadowSprite;
     public float shadowSize = 1;
     public float shadowBias = 0;
+    public float shadowLightBias = 0.5f;
 
     private Dictionary<LightSource, GameObject> shadows;
 
@@ -38,9 +39,12 @@ public class Lightable : MonoBehaviour
     {
         foreach(KeyValuePair<LightSource, GameObject> pair in shadows)
         {
-            Vector3 delta = (transform.position - pair.Key.sourcePoint.transform.position).normalized;
+            Vector3 delta = (transform.position - pair.Key.sourcePoint.transform.position);
             pair.Value.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg + 270);
-            pair.Value.transform.position = delta * shadowBias + transform.position;
+            pair.Value.transform.position = delta.normalized * shadowBias + transform.position;
+            SpriteRenderer s = pair.Value.GetComponent<SpriteRenderer>();
+            float brightness = 1.0f / (-(shadows.Count - 1) - 1) + 1;
+            s.color = new Color(0, 0, 0, (1 - brightness) * (1 - Mathf.Min((delta.magnitude + shadowLightBias) / pair.Key.range, 1.0f)));
         }
     }
 
@@ -55,20 +59,12 @@ public class Lightable : MonoBehaviour
         newShadow.transform.parent = transform;
         newShadow.transform.localPosition = new Vector3(0, 0, 0);
         newShadow.transform.localScale = Vector3.one * shadowSize;
-        Vector3 delta = transform.position - source.transform.position;
-        //newShadow.transform.up = delta;
         SpriteRenderer s = newShadow.AddComponent<SpriteRenderer>();
         s.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         s.sprite = shadowSprite;
         s.sortingOrder = -1;
 
-        foreach(GameObject obj in shadows.Values)
-        {
-            if(!obj) { continue; }
-            s = obj.GetComponent<SpriteRenderer>();
-            float brightness = 1.0f / (-(shadows.Count - 1) - 1) + 1;
-            s.color = new Color(brightness, brightness, brightness, 1);
-        }
+        Update();
     }
 
     public void Unlight(LightSource source)
@@ -79,13 +75,7 @@ public class Lightable : MonoBehaviour
             shadows.Remove(source);
             Destroy(shadow);
 
-            foreach (GameObject obj in shadows.Values)
-            {
-                if (!obj) { continue; }
-                SpriteRenderer s = obj.GetComponent<SpriteRenderer>();
-                float brightness = 1.0f / (-(shadows.Count - 1) - 1) + 1;
-                s.color = new Color(brightness, brightness, brightness, 1);
-            }
+            Update();
         }
     }
 }
