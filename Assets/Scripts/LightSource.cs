@@ -61,7 +61,7 @@ public class LightSource : MonoBehaviour, Togglable
         if(l)
         {
             lightables.Remove(l);
-            if(!lightOn)
+            if(lightOn)
             {
                 l.Unlight(this);
             }

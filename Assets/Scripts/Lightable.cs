@@ -23,6 +23,8 @@ public class Lightable : MonoBehaviour
 
     [SerializeField]
     private Sprite _shadowSprite;
+    public float shadowSize = 1;
+    public float shadowBias = 0;
 
     private Dictionary<LightSource, GameObject> shadows;
 
@@ -36,22 +38,29 @@ public class Lightable : MonoBehaviour
     {
         foreach(KeyValuePair<LightSource, GameObject> pair in shadows)
         {
-            Vector3 delta = transform.position - pair.Key.sourcePoint.transform.position;
+            Vector3 delta = (transform.position - pair.Key.sourcePoint.transform.position).normalized;
             pair.Value.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg + 270);
+            pair.Value.transform.position = delta * shadowBias + transform.position;
         }
     }
 
     public void Light(LightSource source)
     {
+        if (shadows.ContainsKey(source))
+        {
+            return;
+        }
         GameObject newShadow = new GameObject();
         shadows.Add(source, newShadow);
         newShadow.transform.parent = transform;
         newShadow.transform.localPosition = new Vector3(0, 0, 0);
+        newShadow.transform.localScale = Vector3.one * shadowSize;
         Vector3 delta = transform.position - source.transform.position;
         //newShadow.transform.up = delta;
         SpriteRenderer s = newShadow.AddComponent<SpriteRenderer>();
         s.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         s.sprite = shadowSprite;
+        s.sortingOrder = -1;
 
         foreach(GameObject obj in shadows.Values)
         {
@@ -69,6 +78,14 @@ public class Lightable : MonoBehaviour
             GameObject shadow = shadows[source];
             shadows.Remove(source);
             Destroy(shadow);
+
+            foreach (GameObject obj in shadows.Values)
+            {
+                if (!obj) { continue; }
+                SpriteRenderer s = obj.GetComponent<SpriteRenderer>();
+                float brightness = 1.0f / (-(shadows.Count - 1) - 1) + 1;
+                s.color = new Color(brightness, brightness, brightness, 1);
+            }
         }
     }
 }

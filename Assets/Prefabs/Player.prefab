@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1341571086}
   - component: {fileID: 1341571087}
+  - component: {fileID: 7712861104395647734}
+  - component: {fileID: 3799132127524350462}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -69,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 736410e67e09673419294501ec263c22, type: 3}
-  m_Color: {r: 0.7490196, g: 0.7294118, b: 0.7294118, a: 1}
+  m_Color: {r: 0.74509805, g: 0.7294118, b: 0.7294118, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -79,6 +81,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7712861104395647734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341571085}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e07e17173b13e04d958f1bd53ea170f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shadowSprite: {fileID: 21300000, guid: 736410e67e09673419294501ec263c22, type: 3}
+  shadowSize: 1
+  shadowBias: 0
+--- !u!61 &3799132127524350462
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341571085}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.42, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &88963764360248552
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +265,7 @@ GameObject:
   - component: {fileID: 88963764899720646}
   - component: {fileID: 88963764899720645}
   - component: {fileID: 88963764899720642}
+  - component: {fileID: 8761590355234101559}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -352,6 +396,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8761590355234101559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88963764899720665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e07e17173b13e04d958f1bd53ea170f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shadowSprite: {fileID: 21300000, guid: 71552e587e7cc9e46bdff882fd922746, type: 3}
+  shadowSize: 1.2
+  shadowBias: 0.3
 --- !u!1 &4234222414230484732
 GameObject:
   m_ObjectHideFlags: 0
