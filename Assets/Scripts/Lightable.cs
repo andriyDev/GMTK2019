@@ -5,63 +5,70 @@ using UnityEngine;
 
 public class Lightable : MonoBehaviour
 {
-    // 4 images for each light direction
-    public Sprite[] shadowSprites;
-
-    private GameObject[] shadows;
-
-    public bool[] litDirections
+    public Sprite shadowSprite
     {
         get
         {
-            bool[] directions = new bool[4];
-            for(int i = 0; i < 4; i++)
+            return _shadowSprite;
+        }
+        set
+        {
+            _shadowSprite = value;
+            foreach(GameObject obj in shadows.Values)
             {
-                directions[i] = shadows[i] != null;
+                obj.GetComponent<SpriteRenderer>().sprite = value;
             }
-            return directions;
         }
     }
+
+    [SerializeField]
+    private Sprite _shadowSprite;
+
+    private Dictionary<LightSource, GameObject> shadows;
 
     // Start is called before the first frame update
     void Start()
     {
-        shadows = new GameObject[4];
+        shadows = new Dictionary<LightSource, GameObject>();
     }
-    
-    public void Light(int direction)
-    {
-        shadows[direction] = new GameObject();
-        shadows[direction].transform.parent = transform;
-        shadows[direction].transform.localPosition = new Vector3(0, 0, 0);
-        shadows[direction].transform.localEulerAngles = new Vector3(0, 0, direction * 90);
-        SpriteRenderer s = shadows[direction].AddComponent<SpriteRenderer>();
-        s.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-        s.sprite = shadowSprites[direction];
 
-        int lights = 0;
-        foreach(GameObject obj in shadows)
+    private void Update()
+    {
+        foreach(KeyValuePair<LightSource, GameObject> pair in shadows)
         {
-            if(obj)
-            {
-                lights++;
-            }
+            Vector3 delta = transform.position - pair.Key.sourcePoint.transform.position;
+            pair.Value.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg + 270);
         }
-        foreach(GameObject obj in shadows)
+    }
+
+    public void Light(LightSource source)
+    {
+        GameObject newShadow = new GameObject();
+        shadows.Add(source, newShadow);
+        newShadow.transform.parent = transform;
+        newShadow.transform.localPosition = new Vector3(0, 0, 0);
+        Vector3 delta = transform.position - source.transform.position;
+        //newShadow.transform.up = delta;
+        SpriteRenderer s = newShadow.AddComponent<SpriteRenderer>();
+        s.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        s.sprite = shadowSprite;
+
+        foreach(GameObject obj in shadows.Values)
         {
             if(!obj) { continue; }
             s = obj.GetComponent<SpriteRenderer>();
-            float brightness = ((lights - 1) / 4.0f);
+            float brightness = 1.0f / (-(shadows.Count - 1) - 1) + 1;
             s.color = new Color(brightness, brightness, brightness, 1);
         }
     }
 
-    public void Unlight(int direction)
+    public void Unlight(LightSource source)
     {
-        if(shadows[direction])
+        if(shadows.ContainsKey(source))
         {
-            Destroy(shadows[direction]);
-            shadows[direction] = null;
+            GameObject shadow = shadows[source];
+            shadows.Remove(source);
+            Destroy(shadow);
         }
     }
 }

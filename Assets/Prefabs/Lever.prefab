@@ -47,16 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightable: {fileID: 5343186949523110119}
   targets: []
-  onSprites:
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  offSprites:
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
+  onSprite: {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
+  offSprite: {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
 --- !u!114 &5343186949523110119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,11 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e07e17173b13e04d958f1bd53ea170f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowSprites:
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  - {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
-  - {fileID: 21300000, guid: c4e4f661c2d4eff4cae80ed3d346878d, type: 3}
+  _shadowSprite: {fileID: 21300000, guid: 784deade1ec6f134eb1e47ac2490e9d3, type: 3}
 --- !u!58 &2746096021029934194
 CircleCollider2D:
   m_ObjectHideFlags: 0

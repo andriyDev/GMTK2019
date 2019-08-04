@@ -18,11 +18,11 @@ public class LightSource : MonoBehaviour, Togglable
             {
                 if (_lightOn)
                 {
-                    lightable.Light(direction);
+                    lightable.Light(this);
                 }
                 else
                 {
-                    lightable.Unlight(direction);
+                    lightable.Unlight(this);
                 }
             }
             mask.enabled = _lightOn;
@@ -30,35 +30,15 @@ public class LightSource : MonoBehaviour, Togglable
         }
     }
 
-    public int direction
-    {
-        get
-        {
-            return _direction;
-        }
-        set
-        {
-            foreach (Lightable lightable in lightables)
-            {
-                lightable.Unlight(direction);
-            }
-            _direction = value;
-            foreach(Lightable lightable in lightables)
-            {
-                lightable.Light(direction);
-            }
-        }
-    }
-
     public SpriteRenderer sprite;
     public SpriteMask mask;
+    public GameObject sourcePoint;
 
+    public float range;
     public float flickerRate = -1;
 
     [SerializeField]
     private bool _lightOn;
-    [SerializeField]
-    private int _direction;
 
     private List<Lightable> lightables = new List<Lightable>();
 
@@ -70,7 +50,7 @@ public class LightSource : MonoBehaviour, Togglable
             lightables.Add(l);
             if(lightOn)
             {
-                l.Light(direction);
+                l.Light(this);
             }
         }
     }
@@ -83,7 +63,7 @@ public class LightSource : MonoBehaviour, Togglable
             lightables.Remove(l);
             if(!lightOn)
             {
-                l.Unlight(direction);
+                l.Unlight(this);
             }
         }
     }
@@ -93,6 +73,8 @@ public class LightSource : MonoBehaviour, Togglable
     void Start()
     {
         lightOn = lightOn;
+        sprite.material.SetVector("_LightPosition", new Vector4(sourcePoint.transform.position.x, sourcePoint.transform.position.y));
+        sprite.material.SetFloat("_LightRange", range);
     }
 
     // Update is called once per frame

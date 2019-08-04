@@ -206,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
@@ -9969,7 +9969,17 @@ PrefabInstance:
     - target: {fileID: 8238402843150725724, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: flickerRate
-      value: 2
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725724, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.438
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acab831a5070a7540879bb99d369110a, type: 3}
@@ -10073,12 +10083,12 @@ PrefabInstance:
     - target: {fileID: 5343186949523110118, guid: f61766bdf3a514d4893d4e46d3c41d87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7904587
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 5343186949523110118, guid: f61766bdf3a514d4893d4e46d3c41d87,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7362205
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 5343186949523110118, guid: f61766bdf3a514d4893d4e46d3c41d87,
         type: 3}
@@ -10327,6 +10337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light1
       objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725726, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8238402843150725725, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10405,11 +10420,21 @@ PrefabInstance:
     - target: {fileID: 8238402843150725724, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: flickerRate
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8238402843150725724, guid: acab831a5070a7540879bb99d369110a,
         type: 3}
       propertyPath: _lightOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238402843150725724, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058425076355647886, guid: acab831a5070a7540879bb99d369110a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
