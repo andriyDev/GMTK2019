@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour, Togglable
 {
+    public bool SPAWNING = true;
     public float SPAWN_PERIOD = 10.0f;
     public int START_NUM_ENEMIES = 1;
     public bool INCREASING = true;
@@ -16,29 +17,35 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        spawnTimer = SPAWN_PERIOD;
-        numEnemies = START_NUM_ENEMIES;
-        Spawn();
-        if (INCREASING) {
-            numEnemies++;
+        if (SPAWNING)
+        {
+            spawnTimer = SPAWN_PERIOD;
+            numEnemies = START_NUM_ENEMIES;
+            Spawn();
+            if (INCREASING) {
+                numEnemies++;
+            }
         }
     }
 
     void Update()
     {
-        if (spawnTimer <= 0)
+        if (SPAWNING)
         {
-            for(int i = 0; i < numEnemies; i++) {
-                Spawn();
+            if (spawnTimer <= 0)
+            {
+                for(int i = 0; i < numEnemies; i++) {
+                    Spawn();
+                }
+                spawnTimer = SPAWN_PERIOD;
+                if (INCREASING) {
+                    numEnemies++;
+                }
             }
-            spawnTimer = SPAWN_PERIOD;
-            if (INCREASING) {
-                numEnemies++;
+            else
+            {
+                spawnTimer -= Time.deltaTime;
             }
-        }
-        else
-        {
-            spawnTimer -= Time.deltaTime;
         }
     }
 
@@ -52,5 +59,14 @@ public class EnemySpawner : MonoBehaviour
         enemyObject.transform.position = position;
         EnemyController enemyController = enemyObject.GetComponent<EnemyController>();
         enemyController.player = player;
+    }
+
+    public void Toggle()
+    {
+        SPAWNING = !SPAWNING;
+        if (SPAWNING)
+        {
+            spawnTimer = SPAWN_PERIOD;
+        }
     }
 }

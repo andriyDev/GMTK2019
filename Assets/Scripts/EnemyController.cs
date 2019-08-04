@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : Attackable
+public class EnemyController : Attackable, Togglable
 {
     Rigidbody2D rb;
     public AudioClip deathSound;
@@ -16,6 +16,7 @@ public class EnemyController : Attackable
     public float FORCE_MULTIPLIER = 15.0f;
     public float SHOOTING_PERIOD = 2.0f;
     public float MAX_SHOOTING_ANGLE = 40.0f;
+    public bool CAN_MOVE = true;
     public bool DROP_KEYS = true;
     public float KEY_DROP_RATE = 0.2f;
     float shootingTimer;
@@ -43,7 +44,10 @@ public class EnemyController : Attackable
     void FixedUpdate()
     {
         Rotate();
-        Move();
+        if (CAN_MOVE)
+        {
+            Move();
+        }
     }
 
     private void Rotate()
@@ -81,6 +85,11 @@ public class EnemyController : Attackable
         }
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         Destroy(this.gameObject);
+    }
+
+    public void Toggle()
+    {
+        CAN_MOVE = !CAN_MOVE;
     }
 
     private Vector3 GetProjectileTarget(float speed)
