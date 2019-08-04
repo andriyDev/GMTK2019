@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Attackable
 {
+    public AudioClip painSound;
     public float MAX_SPEED = 9.0f;
     public float ACCELERATION = 100.0f;
     public float SWORD_ANIMATION_TIME = 0.5f;
     public int SWORD_MAX_ROTATION = 65;
+    public float FORCE_MULTIPLIER = 15.0f;
     public AttackHandler attacker;
     public InteractHandler interacter;
     public GameObject swordRoot;
@@ -58,26 +60,30 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angleDeg);
     }
 
-    private void Interact() {
+    private void Interact()
+    {
         for(int i = 0; i < interacter.nearbyInteractables.Count; i++)
         {
             interacter.nearbyInteractables[i].onInteract();
         }
     }
 
-    private void Attack() {
+    private void Attack()
+    {
         swordAnimationTimer = SWORD_ANIMATION_TIME;
         for(int i = 0; i < attacker.nearbyAttackables.Count; i++)
         {
-            attacker.nearbyAttackables[i].onAttack();
+            attacker.nearbyAttackables[i].onAttack(this.gameObject);
         }
     }
 
-    private bool IsAttacking() {
+    private bool IsAttacking()
+    {
         return swordAnimationTimer > 0;
     }
 
-    private void AnimateSword() {
+    private void AnimateSword()
+    {
         if (IsAttacking()) {
             float normalizedAnimationTime = (SWORD_ANIMATION_TIME - swordAnimationTimer) / SWORD_ANIMATION_TIME;
             swordRoot.transform.localRotation = Quaternion.Euler(0, 0, -normalizedAnimationTime * SWORD_MAX_ROTATION);
@@ -85,5 +91,12 @@ public class PlayerController : MonoBehaviour
         } else {
             swordRoot.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    public override void onAttack(GameObject attacker)
+    {
+        AudioSource.PlayClipAtPoint(painSound, transform.position);
+        Vector3 newPosition = Vector3.Normalize(transform.position - attacker.transform.position);
+        rb.velocity += new Vector2(newPosition.x, newPosition.y) * FORCE_MULTIPLIER;
     }
 }

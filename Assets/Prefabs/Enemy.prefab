@@ -134,7 +134,10 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 10143c0e2fe9b9e46ab05465e95f7e2e, type: 3}
   painSound: {fileID: 8300000, guid: 5a7fb471455f3504494fae5dd4b5f912, type: 3}
   player: {fileID: 0}
+  projectilePrefab: {fileID: 2521183712173988503, guid: 1b181343adbc7c4408c093e251bf6c0a,
+    type: 3}
   STARTING_HEALTH: 3
   MAX_SPEED: 2
   ACCELERATION: 20
   FORCE_MULTIPLIER: 15
+  SHOOTING_PERIOD: 2

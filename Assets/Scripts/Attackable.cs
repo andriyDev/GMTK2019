@@ -4,5 +4,5 @@ using UnityEngine;
 
 abstract public class Attackable : MonoBehaviour
 {
-    public abstract void onAttack();
+    public abstract void onAttack(GameObject attacker);
 }
