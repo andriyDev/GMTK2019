@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyController : Interactable
 {
     public List<Component> targets;
+    public Togglable opens;
 
     public override void onInteract() {
 
@@ -12,6 +13,7 @@ public class KeyController : Interactable
         {
             ((Togglable)targets[i]).Toggle();
         }
+        opens.Toggle();
         Destroy(this.gameObject);
     }
 }

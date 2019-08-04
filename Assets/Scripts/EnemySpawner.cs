@@ -8,15 +8,24 @@ public class EnemySpawner : MonoBehaviour, Togglable
     public float SPAWN_PERIOD = 10.0f;
     public int START_NUM_ENEMIES = 1;
     public bool INCREASING = true;
+    public GameObject keyPrefab;
     public GameObject enemyPrefab;
     public PlayerController player;
     public GameObject topLeft;
     public GameObject bottomRight;
+    public GameObject opens;
+    public bool DROP_KEYS = true;
+    public float KEY_DROP_RATE = 0.2f;
+    GameObject key;
     float spawnTimer;
     int numEnemies;
 
     void Start()
     {
+        if (DROP_KEYS)
+        {
+            SpawnKey();
+        }
         if (SPAWNING)
         {
             spawnTimer = SPAWN_PERIOD;
@@ -59,6 +68,23 @@ public class EnemySpawner : MonoBehaviour, Togglable
         enemyObject.transform.position = position;
         EnemyController enemyController = enemyObject.GetComponent<EnemyController>();
         enemyController.player = player;
+        if (DROP_KEYS && Random.value < KEY_DROP_RATE)
+        {
+            enemyController.key = key;
+        }
+    }
+
+    void SpawnKey()
+    {
+        GameObject keyObject = (GameObject) Instantiate(keyPrefab);
+        keyObject.SetActive(false);
+        KeyController keyController = keyObject.GetComponent<KeyController>();
+        Togglable opensController = opens.GetComponent<Door>();
+        if (opensController != null)
+        {
+            keyController.opens = opensController;
+            key = keyObject;
+        }
     }
 
     public void Toggle()
