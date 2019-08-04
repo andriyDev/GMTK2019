@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSource : MonoBehaviour
+public class LightSource : MonoBehaviour, Togglable
 {
     [SerializeField]
     public bool lightOn
@@ -87,10 +87,12 @@ public class LightSource : MonoBehaviour
             }
         }
     }
+
     float time = 0;
+    
     void Start()
     {
-        
+        lightOn = lightOn;
     }
 
     // Update is called once per frame
@@ -105,5 +107,10 @@ public class LightSource : MonoBehaviour
                 lightOn = !lightOn;
             }
         }
+    }
+
+    public void Toggle()
+    {
+        lightOn = !lightOn;
     }
 }
