@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public float SPAWN_PERIOD = 10.0f;
+    public int START_NUM_ENEMIES = 1;
+    public bool INCREASING = true;
     public GameObject enemyPrefab;
     public PlayerController player;
     public GameObject topLeft;
@@ -15,9 +17,11 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnTimer = SPAWN_PERIOD;
-        numEnemies = 1;
+        numEnemies = START_NUM_ENEMIES;
         Spawn();
-        numEnemies++;
+        if (INCREASING) {
+            numEnemies++;
+        }
     }
 
     void Update()
@@ -27,8 +31,10 @@ public class EnemySpawner : MonoBehaviour
             for(int i = 0; i < numEnemies; i++) {
                 Spawn();
             }
-            numEnemies++;
             spawnTimer = SPAWN_PERIOD;
+            if (INCREASING) {
+                numEnemies++;
+            }
         }
         else
         {

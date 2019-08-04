@@ -137,11 +137,16 @@ MonoBehaviour:
   player: {fileID: 0}
   projectilePrefab: {fileID: 2521183712173988503, guid: 1b181343adbc7c4408c093e251bf6c0a,
     type: 3}
+  keyPrefab: {fileID: 3543005675756169295, guid: 487cab566465ed641b00aa8a42dca390,
+    type: 3}
   STARTING_HEALTH: 3
   MAX_SPEED: 2
   ACCELERATION: 20
   FORCE_MULTIPLIER: 15
   SHOOTING_PERIOD: 2
+  MAX_SHOOTING_ANGLE: 40
+  DROP_KEYS: 1
+  KEY_DROP_RATE: 0.2
 --- !u!114 &7160984847024243113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +162,4 @@ MonoBehaviour:
   _shadowSprite: {fileID: 21300000, guid: 71552e587e7cc9e46bdff882fd922746, type: 3}
   shadowSize: 1.25
   shadowBias: 0.3
+  shadowLightBias: 0.5

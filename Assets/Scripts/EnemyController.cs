@@ -9,12 +9,15 @@ public class EnemyController : Attackable
     public AudioClip painSound;
     public PlayerController player;
     public GameObject projectilePrefab;
+    public GameObject keyPrefab;
     public short STARTING_HEALTH = 3;
     public float MAX_SPEED = 2.0f;
     public float ACCELERATION = 20.0f;
     public float FORCE_MULTIPLIER = 15.0f;
     public float SHOOTING_PERIOD = 2.0f;
     public float MAX_SHOOTING_ANGLE = 40.0f;
+    public bool DROP_KEYS = true;
+    public float KEY_DROP_RATE = 0.2f;
     float shootingTimer;
     short health;
 
@@ -70,6 +73,16 @@ public class EnemyController : Attackable
         projectile.target = GetProjectileTarget(projectile.MAX_SPEED);
     }
 
+    private void Die()
+    {
+        if (DROP_KEYS && Random.value < KEY_DROP_RATE)
+        {
+            GameObject keyObject = (GameObject) Instantiate(keyPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+        }
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        Destroy(this.gameObject);
+    }
+
     private Vector3 GetProjectileTarget(float speed)
     {
         Vector3 toCurrentPlayer = Vector3.Normalize(player.transform.position - transform.position);
@@ -99,8 +112,7 @@ public class EnemyController : Attackable
         health--;
         if (health <= 0)
         {
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
-            Destroy(this.gameObject);
+            Die();
         } else
         {
             AudioSource.PlayClipAtPoint(painSound, transform.position);
